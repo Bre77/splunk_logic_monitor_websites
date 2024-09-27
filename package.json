@@ -1,6 +1,6 @@
 {
     "name": "logic_monitor_websites",
-    "version": "0.0.1",
+    "version": "1.0.1",
     "license": "https://cdn.splunkbase.splunk.com/static/misc/eula.html",
-    "splunkbaseid": null
+    "splunkbaseid": 7552
 }
