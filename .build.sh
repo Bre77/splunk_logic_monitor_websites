@@ -11,4 +11,4 @@ find lib -type d -name __pycache__ -prune -exec rm -rf {} +
 # so rename the top-level directory in the archive rather than tar the checkout as-is.
 SRC="$(basename "$PWD")"
 cd ..
-tar -cpzf "$OUTPUT" --exclude=.* --overwrite --transform "s,^$SRC,$APPNAME," "$SRC"
+tar -cpzf "$OUTPUT" --exclude=.* --exclude=AGENTS.md --exclude=CLAUDE.md --overwrite --transform "s,^$SRC,$APPNAME," "$SRC"
