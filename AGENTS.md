@@ -11,7 +11,7 @@ This file is the project's committed home for project-intrinsic agent knowledge:
 
 ## Build / vendoring / packaging (`.build.sh`)
 
-- `lib/requirements.txt` lists `splunk_input_runtime` (pinned by commit, see above) and `requests`; `.build.sh` installs it in one `pip install -t lib -r lib/requirements.txt --no-dependencies` pass, relying on Splunk's bundled Python for transitive deps.
+- `lib/requirements.txt` lists `splunk_input_runtime` (pinned by commit, see above), `requests`, and a `certifi` floor (so the package bundles current CA roots rather than using Splunk's); `.build.sh` installs it in one `pip install -t lib -r lib/requirements.txt --no-dependencies` pass, relying on Splunk's bundled Python for other transitive deps.
 - The GitHub repo is named `splunk_logic_monitor_websites`, but the app's package id (`[package] id` in `default/app.conf`, `package.json`'s `name`, already published to Splunkbase) is `logic_monitor_websites`. `.build.sh` renames the archive's top-level directory via `tar --transform` so the `.spl` ships the correct package id regardless of checkout directory name.
 - CI (`.github/workflows/validate.yml`) calls `Bre77/splunk_nats`'s reusable build+AppInspect workflow in `build_command` mode.
 - Version is recorded in three places that must stay in sync: `package.json` and both `version =` lines in `default/app.conf` (`[launcher]` and `[id]`). A mismatch fails AppInspect.
